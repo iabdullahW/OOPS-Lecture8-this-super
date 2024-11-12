@@ -1,0 +1,90 @@
+interface Task1 {
+    void print1();
+}
+
+abstract class Task2 {
+    abstract void print2();
+}
+
+class Book extends Task2 implements Task1 {
+    String title;
+    String author;
+    double price;
+
+    // Default constructor
+    Book() {
+        this.title = "unknown";
+        this.author = "unknown";
+        this.price = 0.0;
+          System.out.println(title + " " + author + " " + price);
+    }
+
+    // Constructor with title and author
+    Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+        this.price = 0.0;
+          System.out.println(title + " " + author + " " + price);
+    }
+
+    // Constructor with title, author, and price
+    Book(String title, String author, double price) {
+        this.title = title;
+        this.author = author;
+        this.price = price;
+        System.out.println(title + " " + author + " " + price);
+    }
+
+    // Implementing interface method
+    @Override
+    public void print1() {
+        System.out.println("Task1 interface method");
+    }
+
+    // Implementing abstract method from Task2
+    @Override
+    public void print2() {
+        System.out.println("Task2 abstract method");
+    }
+}
+
+class BookSuper extends Book implements Task1 {
+    // Constructor that sets specific fields
+    BookSuper() {
+        super("abdullah", "hammad", 270); // Set fields via super constructor
+        
+        //  super(title="ab", author="fw", price=23);
+         
+    }
+    
+    // Constructor with title, author, and price
+    
+    BookSuper(String title, String author, double price) {
+        
+        super(title,author,price); // Use super() to initialize fields
+        System.out.println(title + " " + author + " " + price);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating Book objects with different constructors
+        Book book1 = new Book();
+        Book book2 = new Book("Title One", "Author Two");
+        Book book3 = new Book("Title One", "Author Two", 20.3);
+        
+        // Calling methods
+        book1.print1();
+        book1.print2();
+        
+        System.out.println(" ");
+
+        // Creating BookSuper objects
+        BookSuper bookSuper1 = new BookSuper();
+        BookSuper bookSuper3 = new BookSuper("Khan", "Wow", 300);
+        
+        // Calling methods
+        bookSuper1.print1();
+        bookSuper1.print2();
+    }
+}
